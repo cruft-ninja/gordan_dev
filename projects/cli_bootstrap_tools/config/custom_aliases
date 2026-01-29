@@ -1,0 +1,16 @@
+# ==============================================================================
+# Custom User Aliases
+# ==============================================================================
+# Add your personal aliases here.
+#
+# Usage:
+# alias my_alias="echo 'Hello World'"
+#
+# Markdonw Editors
+# apostophe
+alias mea="/usr/bin/flatpak run --branch=stable --arch=x86_64 --command=apostrophe --file-forwarding org.gnome.gitlab.somas.Apostrophe @@u %U @@"
+# ghostwriter
+alias meg="ghostwriter"
+# markdown
+alias mez="zed"
+alias gemini-safe="/home/ninja/dev/gnarly_workflow_encabulator/bash/scripts/gemini-safe"

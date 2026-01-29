@@ -1,0 +1,7 @@
+#!/bin/bash
+#
+google-chrome https://grok.com?q="a concise lecture on grok etymology for martian students of literature" \
+\
+https://duckduckgo.com?q="a concise lecture on grok literature for martians students of etymology  " \
+\
+https://gemini.google.com?q="a concise lecture on grok etymology for martian students of literature"

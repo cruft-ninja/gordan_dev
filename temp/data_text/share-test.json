@@ -1,0 +1,164 @@
+[
+  {
+    "role": "user",
+    "parts": [
+      {
+        "text": "This is the Gemini CLI. We are setting up the context for our chat.\nToday's date is Thursday 8 January 2026 (formatted according to the user's locale).\nMy operating system is: linux\nThe project's temporary directory is: /home/ninja/.gemini/tmp/c8fb3a446233c931391b716021bfe0e3d5b08b24ea5c9fae2e7c0f4a56309679\nI'm currently working in the directory: /home/ninja/dev\nHere is the folder structure of the current working directories:\n\nShowing up to 200 items (files + folders). Folders or files indicated with ... contain more items not shown, were ignored, or the display limit (200 items) was reached.\n\n/home/ninja/dev/\n├───.geminiignore\n├───.gitignore\n├───gemini-conversation-1767752677210.json\n├───gemini.md\n├───GEMINI.md\n├───readme.md\n├───stats.txt\n├───.gemini/\n│   └───commands/...\n├───.git/...\n├───discuss/\n│   ├───README.md\n│   └───topics/\n│       ├───_template.md\n│       ├───directory_structure.md\n│       ├───README.md\n│       └───registry_indexing.md\n├───projects/\n│   ├───ai_prompt_assistant/\n│   │   ├───gemini.md\n│   │   ├───GEMINI.md\n│   │   └───.gemini/\n│   ├───cli_bootstrap_tools/\n│   │   ├───.gitignore\n│   │   ├───.python-version\n│   │   ├───gemini.md\n│   │   ├───pyproject.toml\n│   │   ├───README.md\n│   │   ├───config/\n│   │   │   ├───custom_aliases\n│   │   │   └───project_aliases\n│   │   ├───docs/\n│   │   │   ├───automation_logic.md\n│   │   │   ├───workflow_automation.md\n│   │   │   ├───ai_session_logs/\n│   │   │   └───cheatsheets/\n│   │   │       ├───awk.md\n│   │   │       ├───bash.md\n│   │   │       ├───gemini-help.md\n│   │   │       ├───git.md\n│   │   │       ├───make.md\n│   │   │       ├───markdown.md\n│   │   │       ├───nano.md\n│   │   │       ├───pytest.md\n│   │   │       ├───python.md\n│   │   │       ├───ruff.md\n│   │   │       ├───uv.md\n│   │   │       └───yaml.md\n│   │   ├───lib/\n│   │   │   └───utils.sh\n│   │   ├───scripts/\n│   │   │   ├───aliases.sh\n│   │   │   ├───gemini-safe\n│   │   │   ├───setup_project.sh\n│   │   │   └───ops/\n│   │   │       └───recreate_venvs.sh\n│   │   ├───src/\n│   │   │   └───main.py\n│   │   └───templates/\n│   │       ├───.editorconfig\n│   │       ├───.pre-commit-config.yaml\n│   │       ├───ci.yml\n│   │       └───Makefile\n│   ├───docs_gemini_internals/\n│   │   ├───gemini.md\n│   │   └───README.md\n│   ├───learning_mentorship_logs/\n│   │   ├───gemini.md\n│   │   └───README.md\n│   └───task_runner_gui/\n│       ├───.gitignore\n│       ├───changelog.md\n│       ├───gemini.md\n│       ├───README.md\n│       ├───runner.py\n│       ├───scripts.json\n│       ├───.continue/\n│       │   └───rules/\n│       ├───.ruff_cache/\n│       │   └───0.14.10/...\n│       ├───.vscode/\n│       ├───assets/\n│       │   └───screenshot.png\n│       ├───bash/\n│       │   ├───docker_image_prune.sh\n│       │   ├───edit_source.sh\n│       │   ├───gemini.md\n│       │   ├───gmail.sh\n│       │   ├───grok.sh\n│       │   ├───images_from_cam.sh\n│       │   ├───ollama_model_update.sh\n│       │   ├───ollama_update.sh\n│       │   ├───openwebui.sh\n│       │   ├───purge_logs.sh\n│       │   ├───README.md\n│       │   ├───system_monitor.sh\n│       │   ├───terminal\n│       │   ├───toggle_onboard.sh\n│       │   ├───update_docker_images.sh\n│       │   ├───update_system.sh\n│       │   └───url/\n│       │       └───ollamamodelupdater\n│       └───docs/\n├───registry/\n│   ├───collab_notes.md\n│   ├───docs/\n│   │   ├───INDEX.md\n│   │   ├───archive/\n│   │   │   ├───2026-01-05_initial_template_outline.md\n│   │   │   └───2026-01-05_task_template_proposal.md\n│   │   ├───learning/\n│   │   │   ├───2026-01-04_1000_project_structure.md\n│   │   │   ├───2026-01-04_1005_initial_prompt.md\n│   │   │   ├───2026-01-04_1010_gemini_internals.md\n│   │   │   ├───2026-01-04_1015_memory_explanation.md\n│   │   │   ├───2026-01-04_1020_memory_configuration.md\n│   │   │   ├───2026-01-04_1025_crafting_gemini_md.md\n│   │   │   ├───2026-01-04_1030_defining_gemini_context.md\n│   │   │   ├───2026-01-04_1035_creating_gemini_md.md\n│   │   │   ├───2026-01-04_1040_security_architecture.md\n│   │   │   ├───2026-01-04_1100_gemini_3_comparison.md\n│   │   │   ├───2026-01-04_1110_ide_setup_guide.md\n│   │   │   ├───2026-01-04_1615_memory_storage_investigation.md\n│   │   │   ├───2026-01-04_1620_slash_command_redirection.md\n│   │   │   ├───2026-01-04_1630_debug_memory_context_visibility.md\n│   │   │   ├───2026-01-04_1640_piping_vs_interactive_mode.md\n│   │   │   ├───2026-01-04_1645_directory_confusion_clarification.md\n│   │   │   ├───2026-01-04_1650_context_file_scope.md\n│   │   │   ├───2026-01-04_1700_crafting_mentor_prompt.md\n│   │   │   ├───2026-01-04_1705_adding_logs_to_mentor.md\n│   │   │   ├───2026-01-04_1715_context_file_latency.md\n│   │   │   ├───2026-01-04_1720_security_policy_update.md\n│   │   │   ├───2026-01-04_1725_permission_scope_summary.md\n│   │   │   ├───2026-01-04_1730_setup_complete_transition.md\n│   │   │   ├───2026-01-04_Prompt_Session.md\n│   │   │   ├───2026-01-05_0900_gnarly_workflow_notes.md\n│   │   │   ├───2026-01-05_1200_prompt_engineering_principles.md\n│   │   │   ├───2026-01-05_1205_prompt_engineering_notes.md\n│   │   │   ├───2026-01-05_1210_uv_package_manager_guide.md\n│   │   │   ├───2026-01-05_1215_prompt_engineering_videos.md\n│   │   │   ├───2026-01-05_1220_gemini_pro_web_vs_cli.md\n│   │   │   ├───2026-01-05_1225_convo_0000.md\n│   │   │   ├───2026-01-05_1230_convo_prompt_best_practices.md\n│   │   │   ├───2026-01-05_1235_grok_github_integration.md\n│   │   │   ├───2026-01-05_1240_grok_sys_prompt.md\n│   │   │   ├───gemini_workspace_prompting_guide.pdf\n│   │   │   └───Notes.html\n│   │   ├───protocol/\n│   │   │   ├───AI_DOCS_STANDARD.md\n│   │   │   ├───AI_GLOSSARY.md\n│   │   │   └───AI_SECURITY_POLICY.md\n│   │   └───tools/\n│   │       └───2025-12-00_editor_and_ide_reference.md\n│   ├───tasks/\n│   │   └───T-002_centralized_document_management.md\n│   └───templates/\n│       ├───GUIDE.md\n│       ├───task_sample.md\n│       └───task_template.md\n├───temp/\n│   ├───cli_bootstrap_tools_backup/...\n│   ├───data_text/...\n│   ├───docs/...\n│   ├───gemini_web_upload/...\n│   └───utils_backup/...\n└───utils/\n    ├───check_cpu.sh\n    ├───tag_registry_search.sh\n    └───text_registry_search.sh\n\nReminder: Do not return an empty response when a tool call is required.\n\nMy setup is complete. I will provide my first command in the next turn."
+      }
+    ]
+  },
+  {
+    "role": "user",
+    "parts": [
+      {
+        "text": "I ran the following shell command:\n```sh\nls\n```\n\nThis produced the following result:\n```\ndiscuss                                 gemini.md  manager   readme.md  stats.txt  utils\ngemini-conversation-1767752677210.json  GEMINI.md  projects  registry   temp\n```"
+      }
+    ]
+  },
+  {
+    "role": "user",
+    "parts": [
+      {
+        "text": "I ran the following shell command:\n```sh\ncd registry\n```\n\nThis produced the following result:\n```\nWARNING: shell mode is stateless; the directory change to '/home/ninja/dev/registry' will not persist.\n\n(Command produced no output)\n```"
+      }
+    ]
+  },
+  {
+    "role": "user",
+    "parts": [
+      {
+        "text": "I ran the following shell command:\n```sh\nls\n```\n\nThis produced the following result:\n```\ndiscuss                                 gemini.md  manager   readme.md  stats.txt  utils\ngemini-conversation-1767752677210.json  GEMINI.md  projects  registry   temp\n```"
+      }
+    ]
+  },
+  {
+    "role": "user",
+    "parts": [
+      {
+        "text": "list git commands"
+      }
+    ]
+  },
+  {
+    "role": "user",
+    "parts": [
+      {
+        "text": "list git commands"
+      }
+    ]
+  },
+  {
+    "role": "user",
+    "parts": [
+      {
+        "text": "ist git commands"
+      }
+    ]
+  },
+  {
+    "role": "model",
+    "parts": [
+      {
+        "text": "I will read the git cheatsheet from `projects/cli_bootstrap_tools/docs/cheatsheets/git.md` to provide you with a list of git commands relevant to your environment.\n"
+      },
+      {
+        "thoughtSignature": "CiQBjz1rX+twY8loxuE61yt/ymV9QMPELkQFAtSOZDau2Og7J1YKdQGPPWtf5Eky+Fn9KrbwTktFbrH0qr4c6mavdr6sbUn4+BgJIhPJ8O9JKWMR7jvaLYkmrSQHodQT2x0p6AdL3CKrBcYDqP57+YBr9krortPGVumm2gY3IUYcvyBtPZcs2mdvwv/py+B7SO+dGBesWTKrs9b27wplAY89a18aWdoR8FKQ34yDOCc9W7BJLxIAZZb3D8b6qRqACkICcj7Avokxy1xiBTUdvAeknDwdTbUsta/935yCMvuQOXB5DAm1d4bMuk3hspUFt5cnd3GBX+Xa/cAShpBAXZIGWxIKmQEBjz1rX5NPA+7w2qxvYx9cVEMRPsvmdh6WCtFqXTg8UYMQI+zMiO0cL/7AGFUIFQMdbxoKOPb7dayCxp79XVoXIrhnSEm0yaOR720dFzxfizw99k3+8XdQARub1lEJTX1aIcdLOGAqYRHDfA7kpwE8Oy40irMAjPakXe/aqInih1lbsKzglxX6UPhJ4l+CW7ESqgfXntJfnHAKqQEBjz1rX5pW3G16J0YSMKYKRgh+m5TYGocQirC/sNMUmh9/jSjFViCJ/ASjWoGYsHaBDQZvBaLTuxRGnG7vAVyqiZuQKRzaYyuNoS6N0K7+1yqSXq/scINJJKpdZ3ae5Z0gcwYN4J4a+/sC/BDk6Dn25oHWY7YG8sUIkeYGBQ7ICOhQuNBFwT6iA7v59VLnkYA0qEFxKABSBC/J26HUwFdg+KXYkwEpmMbqCrgBAY89a19xg3Zk/LEguLA4npQHzB0wyDSM5YjlXxItKpurLOxWN8YonwtZOkh4WgnRZJg6YFrCgWbQhu0/eSWie8e6F/6en8UcF04hSXzYkjPqD7kxjOTU/A39M3h9MxPOkI5mqQs371kqIq6q4s+PvIaezIPc7DGj2M6cqK/8zRGpYdeip3y//D6p6gbs5RmktI375J2VpKRIb0AOO8J1GG+cqo0AmVFcskGIsnyw7LHTPOOsunycsgrEAQGPPWtfMcPtEgfPGWXZAKHPdKA84fOKDmf1IoLzTiCjcv74CIgIXTApMypU+nn1nq26oyPIMTxu5+Bf8t5T+RLKF/Cmtev2wnyxexmzCHoY6dxttMoTPArbkeq6kjx2orreXA5D6sMPcPyUo+QcRubxmPZqbcrFnbUJsDhjVWAumaBFYoGdq8PNtk5QcZN90Fh/OgXSgPrOubdPtev/W73rRVhaYjVk72v+wigZGlOw8cctZATac5yYmFl8YAQyHR39X4UKIgGPPWtfaWyOsV2TK0IMKvOHKFNFPyHIaiotOJyjGwzUexI=",
+        "functionCall": {
+          "name": "read_file",
+          "args": {
+            "file_path": "projects/cli_bootstrap_tools/docs/cheatsheets/git.md"
+          }
+        }
+      }
+    ]
+  },
+  {
+    "role": "user",
+    "parts": [
+      {
+        "functionResponse": {
+          "id": "read_file-1767818675865-a958c39c0a7c6",
+          "name": "read_file",
+          "response": {
+            "output": "# Git Cheatsheet (Basics)\n\n## 1. Getting Started\n| Command | What it does |\n| :--- | :--- |\n| `git init` | Turns the current folder into a new Git repository. |\n| `git clone <url>` | Downloads an existing project from the internet (like GitHub) to your computer. |\n\n## 2. Saving Changes\nThink of saving in Git as a two-step process: **Staging** (preparing the box) and **Committing** (sealing the box).\n\n| Command | What it does |\n| :--- | :--- |\n| `git add <file>` | **Stage a file.** Tells Git, \"Include this file's changes in the next save.\" Use `git add .` to add *everything*. |\n| `git commit -m \"message\"` | **Save.** Takes everything you staged and saves it as a permanent snapshot with a description. |\n\n## 3. Checking Status\n| Command | What it does |\n| :--- | :--- |\n| `git status` | **The most important command.** Tells you what files have changed, what is staged, and what is untracked. Run this often! |\n| `git diff` | Shows you the exact text changes you made to files that haven't been staged yet. |\n| `git log` | Shows a list of all past commits (history). |\n\n## 4. Syncing with Others (or Backup)\n| Command | What it does |\n| :--- | :--- |\n| `git push` | Uploads your commits to a remote server (like GitHub). |\n| `git pull` | Downloads new changes from the remote server and updates your files. |\n\n**Pro Tip:** If you ever feel lost, just run `git status`. It usually tells you exactly what state you are in and often suggests what to do next.\n"
+          }
+        }
+      }
+    ]
+  },
+  {
+    "role": "model",
+    "parts": [
+      {
+        "text": "Here are the basic git commands from your local cheatsheet:\n\n### Getting Started\n*   `git init`: Initialize a new repository.\n*   `git clone <url>`: Download an existing repository.\n\n### Saving Changes\n*   `git add <file>`: Stage changes (prepare them for saving). Use `git add .` for everything.\n*   `git commit -m \"message\"`: Save staged changes with a message.\n\n### Checking Status\n*   `git status`: Check the state of your files (changed, staged, untracked).\n*   `git diff`: See what text changed in your files.\n*   `git log`: View commit history.\n\n### Syncing\n*   `git push`: Upload commits to a remote server.\n*   `git pull`: Download updates from a remote server.\n\n**Tip:** Run `git status` frequently to see where you stand."
+      }
+    ]
+  },
+  {
+    "role": "user",
+    "parts": [
+      {
+        "text": "purpose: prompt format example\ncontext: google-gemini\ntasks: examine + opimise this input\nessential: [clear intent, uunambiguous]\ndesirable: minimal token cost\nconstraints: [concise, opimised example, minimal explanation]"
+      }
+    ]
+  },
+  {
+    "role": "model",
+    "parts": [
+      {
+        "text": "**Optimized Prompt:**\n\n```yaml\nTask: Optimize prompt format\nCtx: Google Gemini\nReqs: Clear, Unambiguous, Min-tokens\nMode: Concise, Minimal explanation\n```\n\n**Changes:**\n1.  **Consolidated Keys:** Merged `essential`, `desirable`, and `constraints` into `Reqs` (Requirements) and `Mode` for clearer instruction hierarchy.\n2.  **Shortened Keys:** `purpose` → `Task`, `context` → `Ctx`.\n3.  **Removed Stop Words:** \"this input\", \"example\"."
+      }
+    ]
+  },
+  {
+    "role": "user",
+    "parts": [
+      {
+        "text": "Task: Suggest ten input keywords\nCtx: Google Gemini\nReqs: Clear, Unambiguous, Min-tokens\nMode: Concise, Minimal explanation"
+      }
+    ]
+  },
+  {
+    "role": "model",
+    "parts": [
+      {
+        "thoughtSignature": "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",
+        "text": "1. `Task`\n2. `Role`\n3. `Context`\n4. `Format`\n5. `Rules`\n6. `Tone`\n7. `Audience`\n8. `Example`\n9. `Input`\n10. `Steps`"
+      }
+    ]
+  },
+  {
+    "role": "user",
+    "parts": [
+      {
+        "text": "omit line numbers"
+      }
+    ]
+  },
+  {
+    "role": "model",
+    "parts": [
+      {
+        "thoughtSignature": "CikBjz1rXzY5H4Vq2PBUtkqQFXvg56atrHVIN28Nu7iEi/XEzJd9vLOM1gppAY89a19lXFnxKB5dbeXXbJdefMozU9LQTWQa5MF1i0ln6e15lYHCKTysjF6uVQM2rnmNdZH7iN1zHYHv3mCBd4omQFbT/Qzx537zllz+snc7bl6D7ajKJDqM3T8i/3c/hS1cnXZ09frTCmABjz1rX9rniM+cNVYotw94i9qQ+BYaXhHa4jDEzmh9hK6/9gEzWln/GoHm7EUMCin/+VhgF7Na0pi5ti5OXE84X2DCyy25KQ3cu0sjyLobhuI4xK99erdYJ+N2PYmLHxEKsgEBjz1rX4u0x+h1hHTvJa3OtUUrntrTTFRIk36rs3RejXBtyDAydq0lw2eh+9HjUPZYvvyTbiMQVvXejD/PK9Si/nQUAjAO1CdvK4UZaTAU9GQRbA37TKqJmAGC603OA56AxSjxDaHoFwZ098d1bCVX6dSh1sOznqSOQTbyOp6hxH1+kWmDkWFwBWK8II3lOKz7rLcoqBmCPIzQbKCzHfPArKh3SU/esZZggrnhkZ5rFtFtCnkBjz1rXzllu2nrOjgV47lgSeKHCgQdf26GT5jFRlRWwEaYM7CmoR+O7EwMw4227N92FIVqSDKEdxRl/dvOQLoz6TycQ7TWXuN4y5gwX59wesCEeS8E7MjOO63vYOv6JpQQo4xDZzavqjT0ig0eoY3yYESlq1R6sxorCoYBAY89a1/ShiYxl32ssI+MXu7R4RLHv/37DHsnX2oJLssxwrBjNGCZJR2Q+R6e4RJa/Vu3g4XsoR0Tr9UXgt3FgDNswcuIcho7Q8RaZxYW6uxKWHTm1tEH30AI1Kb9BmyyjMFSzKzY3/oYu/uhGPyt2y8C5vE5ZR+ThquBX3cBnQdGIcypsSEKxgEBjz1rXyF/boaxfcuXom9+sSRdQGEypMhcayu26UjmAROBIO3Ii1N8xf3DDnNRIoKK+xWWeK+Hz4nRtD4lrMMLgN5JegvdXT7L00mUBc+yS7/UwVat0PqowAXBIg+e5mD16bV/sYw9uweAZWfK060mDaO4IlBPXeGH0/Bgb6fSuddTol/SPdBdm5QERHhv7Pl+Nxok4vv+r6v81EOQqVSZIO3hD/RYxQJYXh1dCNVLYXDy4OO3kETKWwNY1PbqoQNNck+ax1kKiAEBjz1rXwv3CiZMq9Y5pyDqw5229Olf1eODMZ6IKtlpXvncKZRoEyOaU7NeAK3KNDsg6eESboHKY+UCS0/+saUJfk8T05ChEt+95eF82GU2Z/15DfnDP6e/erXe71vaN7FmPFVqAxzQdzORmz4x0X/07zLw9SlVDIXwBtJlwSO9lcOQa/ktj6/ZCiIBjz1rX0RRoyr7XCVWqFjxWsOkBknY/9NHfwiO0MofczQV",
+        "text": "`Task`\n`Role`\n`Context`\n`Format`\n`Rules`\n`Tone`\n`Audience`\n`Example`\n`Input`\n`Steps`"
+      }
+    ]
+  },
+  {
+    "role": "user",
+    "parts": [
+      {
+        "text": "list ten more keywords"
+      }
+    ]
+  },
+  {
+    "role": "model",
+    "parts": [
+      {
+        "thoughtSignature": "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",
+        "text": "`Goal`\n`Style`\n`Limit`\n`Source`\n`Scope`\n`Focus`\n`Avoid`\n`Query`\n`Model`\n`Output`"
+      }
+    ]
+  }
+]

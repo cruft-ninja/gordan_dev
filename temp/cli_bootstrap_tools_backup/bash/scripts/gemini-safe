@@ -1,0 +1,41 @@
+#!/bin/bash
+
+# gemini-safe
+# A wrapper to launch Gemini CLI with strict filesystem confinement using Bubblewrap (bwrap).
+# Usage: ./gemini-safe [arguments]
+
+# 1. Define the Root of Authority (The current directory)
+PROJECT_ROOT=$(pwd)
+
+# 2. Locate the real Gemini executable
+GEMINI_BIN=$(which gemini)
+
+if [ -z "$GEMINI_BIN" ]; then
+    echo "❌ Error: 'gemini' executable not found in PATH."
+    exit 1
+fi
+
+echo "🛡️  GEMINI SECURITY SHIELD ACTIVE"
+echo "   🔒 Read-Only:  / (System)"
+echo "   🔒 Read-Only:  $HOME (User Home)"
+echo "   🔓 Read-Write: $HOME/.gemini (Memory/Config)"
+echo "   🔓 Read-Write: $PROJECT_ROOT (Current Project)"
+
+# 3. Launch Bubblewrap
+# --ro-bind / /             : Mount the entire OS as Read-Only
+# --dev /dev                : Map devices (needed for random, null, etc.)
+# --proc /proc              : Map processes
+# --bind /tmp /tmp          : Share system temp (needed for some IPC/sockets)
+# --bind "$HOME/.gemini" "$HOME/.gemini" : Allow read/write to Gemini internal state
+# --bind "$PROJECT_ROOT" "$PROJECT_ROOT" : Allow read/write to the Current Working Directory ONLY
+# "$GEMINI_BIN" "$@"        : Run the actual gemini command with original arguments
+
+bwrap \
+  --ro-bind / / \
+  --dev /dev \
+  --proc /proc \
+  --bind /tmp /tmp \
+  --bind "$HOME/.gemini" "$HOME/.gemini" \
+  --bind "$HOME/.cache" "$HOME/.cache" \
+  --bind "$PROJECT_ROOT" "$PROJECT_ROOT" \
+  "$GEMINI_BIN" "$@"

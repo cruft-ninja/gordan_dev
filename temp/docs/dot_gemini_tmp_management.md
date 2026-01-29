@@ -1,0 +1,1 @@
+* ~/.gemini/tmp: - as managed by gemini-cli on linux: - basics: - directory structure & files: - name - purpose * scrutinise format of this and next two prompts: - clarity - token economy * be: critical - terse

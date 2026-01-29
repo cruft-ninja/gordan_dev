@@ -1,0 +1,22 @@
+#!/bin/bash
+# Script: xdg_urls
+# Purpose: Opens multiple URLs in Google Chrome.
+# Usage: Source the script or run it. Prompts for URLs if no args provided.
+
+# Capture args or prompt user
+if [ $# -eq 0 ]; then
+    read -p "Enter URLs (space separated): " -a inputs
+    urls="${inputs[@]}"
+else
+    urls="$*"
+fi
+
+# Validation
+if [ -z "$urls" ]; then
+    echo "No URLs provided."
+    return 1 2>/dev/null || exit 1
+fi
+
+echo "Opening: $urls"
+# Open URLs in Chrome (unquoted variable allows argument splitting)
+/usr/bin/google-chrome-stable $urls

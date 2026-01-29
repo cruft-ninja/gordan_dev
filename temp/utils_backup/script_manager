@@ -1,0 +1,151 @@
+#!/bin/bash
+
+# Script: script_manager
+# Description: Manages and generates simple bash scripts in utils/bash/
+# Usage: ./utils/script_manager or ./manager
+# Note: Now intended to be executed or sourced.
+
+# Define the destination directory for the generated scripts relative to this script
+# Resolve the absolute path of the script, handling symlinks and sourcing
+if [ -n "$BASH_SOURCE" ]; then
+    REAL_PATH="$(readlink -f "$BASH_SOURCE")"
+else
+    REAL_PATH="$(readlink -f "$0")"
+fi
+SCRIPT_DIR="$(cd "$(dirname "$REAL_PATH")" && pwd)"
+TARGET_DIR="$SCRIPT_DIR/bash"
+mkdir -p "$TARGET_DIR"
+
+# Function to generate a new script
+generate_new_script() {
+    local NAME=""
+    local COMMAND=""
+    local CONFIRM=""
+
+    printf "Enter new script name: "
+    read -r NAME
+    
+    # Check for empty name
+    if [ -z "$NAME" ]; then
+        echo "Error: Name cannot be empty."
+        return 1
+    fi
+
+    # Check if script already exists
+    if [ -f "$TARGET_DIR/$NAME" ]; then
+        printf "Script '$NAME' already exists. Overwrite? (y/N): "
+        read -r CONFIRM
+        if [[ ! "$CONFIRM" =~ ^[Yy]$ ]]; then
+            echo "Operation cancelled."
+            return 1
+        fi
+    fi
+
+    printf "Enter command for '$NAME': "
+    read -r COMMAND
+
+    # Check for empty command
+    if [ -z "$COMMAND" ]; then
+        echo "Error: Command cannot be empty."
+        return 1
+    fi
+
+    cat <<EOF > "$TARGET_DIR/$NAME"
+#!/bin/bash
+$COMMAND
+EOF
+    echo "Generated script '$TARGET_DIR/$NAME' successfully."
+}
+
+# Function to delete an existing script
+delete_script() {
+    local SCRIPTS=()
+    for f in "$TARGET_DIR"/*; do
+        if [ -f "$f" ]; then
+            SCRIPTS+=("${f##*/}")
+        fi
+    done
+
+    if [ ${#SCRIPTS[@]} -eq 0 ]; then
+        echo "No scripts available to delete."
+        return 0
+    fi
+
+    echo "--- Delete a Script ---"
+    PS3="Select a script to DELETE (or select Cancel): "
+    local del_options=("${SCRIPTS[@]}" "Cancel")
+    
+    local old_columns=$COLUMNS
+    COLUMNS=1
+    select del_opt in "${del_options[@]}"; do
+        if [ "$del_opt" == "Cancel" ]; then
+            echo "Deletion cancelled."
+            break
+        elif [ -n "$del_opt" ]; then
+            printf "WARNING: Are you sure you want to delete '$del_opt'? (y/N): "
+            read -r CONFIRM
+            if [[ "$CONFIRM" =~ ^[Yy]$ ]]; then
+                rm "$TARGET_DIR/$del_opt"
+                echo "Script '$del_opt' deleted."
+            else
+                echo "Deletion cancelled."
+            fi
+            break
+        else
+            echo "Error: Invalid selection."
+        fi
+    done
+    COLUMNS=$old_columns
+}
+
+# Loop to allow the menu to refresh
+while true; do
+    # Get list of existing scripts using a glob and stripping the path
+    SCRIPTS=()
+    for f in "$TARGET_DIR"/*; do
+        if [ -f "$f" ]; then
+            SCRIPTS+=("${f##*/}")
+        fi
+    done
+
+    echo "--- Script Manager ---"
+    PS3="Select an option: "
+    unset options
+    options=("Create New Script" "Delete a Script" "${SCRIPTS[@]}" "Quit")
+
+    # Force the select menu to display one item per line
+    COLUMNS=1
+    
+    select opt in "${options[@]}"; do
+        case "$opt" in
+            "Create New Script")
+                generate_new_script
+                # Break out of select to refresh the script list in the while loop
+                break 
+                ;;
+            "Delete a Script")
+                delete_script
+                # Break to refresh menu
+                break
+                ;;
+            "Quit")
+                # Exit the while loop and the script
+                break 2
+                ;;
+            *)
+                if [[ -n "$opt" ]]; then
+                    echo "Sourcing $TARGET_DIR/$opt..."
+                    # Note: Sourcing from within a subshell or a called script
+                    # won't affect the parent shell unless this manager is also sourced.
+                    source "$TARGET_DIR/$opt"
+                    # After sourcing, exit the manager
+                    break 2
+                else
+                    echo "Error: Invalid selection."
+                    # Break to refresh menu
+                    break
+                fi
+                ;;
+        esac
+    done
+done

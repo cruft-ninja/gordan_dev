@@ -1,0 +1,42 @@
+Executive Summary: `~/dev` Ecosystem
+
+  The ~/dev habitat is a modular, AI-augmented development environment designed to formalize the
+  collaboration between human operators and autonomous agents. It functions as a "living classroom" where
+  documentation, code, and operational protocols co-evolve.
+
+  1. Architectural Core
+  The system uses a Hub-and-Spoke model centered on strict context management:
+   * The Hub (Governance): The registry/ directory acts as the immutable Source of Truth, housing global
+     protocols (AI_SECURITY_POLICY.md), glossaries, and the central task tracker.
+   * The Spokes (Operations): Specialized sub-directories (Projects) operate as semi-autonomous domains,
+     each governed by a local GEMINI.md context file that defines the agent's identity, constraints, and
+     specific toolchain access.
+
+  2. Technical Pillars
+   * Context Injection Protocol: Every interaction is grounded by GEMINI.md files. This ensures agents
+     "wake up" with instant knowledge of their specific domain (e.g., the task_runner_gui agent knows it
+     owns runner.py and scripts.json immediately).
+   * Polyglot Automation:
+       * Infrastructure: Native Bash scripts (in cli_bootstrap_tools/) handle low-level system operations
+         (file permissions, backups, environment setup).
+       * Application Layer: Python (managed by uv) drives complex logic, GUIs (tkinter), and dependency
+         management.
+   * Self-Correcting Documentation: The system employs a "Documentation as Code" philosophy. Changes to
+     code triggers mandatory updates to documentation (e.g., docs_gemini_internals), ensuring the map
+     never drifts from the territory.
+
+  3. Operational Modules
+   * `cli_bootstrap_tools`: The engine room. Automates project scaffolding and Python environment
+     management.
+   * `task_runner_gui`: The bridge. A visual interface transforming CLI scripts into push-button
+     workflows.
+   * `prompt_engineering`: The laboratory. A dedicated workspace for refining and versioning the prompts
+     that drive the agents.
+
+  4. Security & Compliance
+   * Model: Trust but Verify.
+   * Implementation: Centralized security policies dictate file access and execution rights. The Overseer
+     (Root Agent) acts as the final auditor for cross-project dependencies and protocol adherence.
+
+  Conclusion: The ~/dev ecosystem is not just a folder structure; it is a cybernetic system ensuring
+  consistency, security, and continuous learning across all development activities.

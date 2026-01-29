@@ -1,0 +1,52 @@
+#!/bin/bash
+# Script: demo_yaml_extract
+# Purpose: Demonstrates extracting a value from YAML frontmatter using awk.
+# Usage: source bash/demo_yaml_extract; extract_yaml_key <file> <key>
+
+extract_yaml_key() {
+    local file="$1"
+    local key="$2"
+    
+    if [ ! -f "$file" ]; then
+        echo "Error: File '$file' not found."
+        return 1
+    fi
+
+    # awk logic:
+    # 1. /---/ toggles the 'in_frontmatter' flag.
+    # 2. Only process lines when in_frontmatter is true.
+    # 3. Look for 'key:' at the start of the line (allowing for whitespace).
+    # 4. Print the second column onwards as the value.
+    awk -v target="$key" '
+    BEGIN { in_fm = 0; found = 0; }
+    /^---$/ {
+        if (in_fm == 0) { in_fm = 1; next; } 
+        else { exit; } 
+    }
+    in_fm == 1 {
+        # Match "key: value" allowing for whitespace around key and colon
+        if ($0 ~ "^[[:space:]]*" target "[[:space:]]*:") {
+            # Split by first colon
+            match($0, ":");
+            val = substr($0, RSTART + 1);
+            
+            # Trim whitespace and quotes
+            gsub(/^[[:space:]"'\''`]+|[[:space:]"'\''`]+$/, "", val);
+            
+            print val;
+            found = 1;
+            exit; 
+        }
+    }
+    END { if (found == 0) exit 1; }
+    ' "$file"
+}
+
+# Example usage if run directly (though intended for sourcing)
+if [[ "${BASH_SOURCE[0]}" == "${0}" ]]; then
+    if [ $# -lt 2 ]; then
+        echo "Usage: $0 <file> <key>"
+        exit 1
+    fi
+    extract_yaml_key "$1" "$2"
+fi
